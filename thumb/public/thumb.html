@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>thumb</title>
+	<style type="text/css">
+		#thumb {
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			left: 50%;
+			margin-left: -100px;
+			top: 150px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#jiaone {
+			position: absolute;
+			color: rgb(255, 61, 0);
+			top: -20px;
+			left: 102px;
+			font-size: 32px;
+		}
+		.shouwan {
+			width: 20px;
+			height: 80px;
+			border-radius: 6px;
+			border: 3px solid #3F3C3C;
+			position: absolute;
+			left: -26px;
+			background-color: rgb(255, 133, 0);
+		}
+		.shouzhi {
+			float: left;
+			position: relative;
+		}
+		.shouzhang {
+			width: 50px;
+			height: 70px;
+			border: 3px solid #3F3C3C;
+			position: absolute;
+			top: 5px;
+			left: -3px;
+			border-radius: 6px;
+			z-index: 2;
+			background-color: #fff;
+			border-right :none;
+			background-color: rgb(255, 133, 0);
+		}
+		.damuzhi {
+			content: "";
+			width: 20px;
+			height: 50px;
+			border: 3px solid #3F3C3C;
+			position: absolute;
+			top: -35px;
+			left: 6px;
+			border-radius: 15px;
+			transform:  rotate(30deg);
+			-ms-transform:  rotate(30deg);
+			-moz-transform:  rotate(30deg);
+			-webkit-transform:  rotate(30deg);
+			-o-transform:  rotate(30deg);
+			z-index: 1;
+			background-color: rgb(255, 133, 0);
+		}
+		.anthumb{
+			position: absolute;
+			left: 30px;
+			border: 3px solid #3F3C3C;
+			height: 15.5px;
+			z-index: 3;
+			background-color: #fff;
+			border-left: none;
+			border-radius: 10px;
+			background-color: rgb(255, 133, 0);
+		}
+		.shizhi {
+			top: 5px;
+			width:  50px;
+		}
+		.zhongzhi {
+			top: 24px;
+			width:  40px;
+			left: 35px;
+		}
+		.wumingzhi {
+			top: 43px;
+			width:  30px;
+			left: 35px;
+		}
+		.xiaozhi {
+			top: 62px;
+			width: 20px;
+			left: 37px;
+			height: 12.5px;
+		}
+		.baiContent {
+			content: "";
+			width: 30px;
+			background-color: #fff;
+			height: 70px;
+			position: absolute;
+			top: 8px;
+			left: 14px;
+			z-index: 4;
+			background-color: rgb(255, 133, 0);
+		}
+		#dianzanshu {
+			color: #DB1616;
+			position: absolute;
+			z-index: 5;
+			top: 30px;
+			left: 20px;
+			font-weight: bold;
+		}
+		.jaoneHide {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="thumb">
+		<!-- +1 -->
+		<div id="jiaone" class="jaoneHide">+1</div>
+		<!-- shou -->
+		<div class="shou">
+			<!-- shou wan-->
+			<div class="shouwan"></div>
+			<div class="shouzhang"></div>
+			<div class="damuzhi"></div>
+			<div class="anthumb shizhi"></div>
+			<div class="anthumb zhongzhi"></div>
+			<div class="anthumb wumingzhi"></div>
+			<div class="anthumb xiaozhi"></div>
+			<div class="baiContent"></div>
+			<!-- dian zan shu -->
+		<span id="dianzanshu"></span>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://cdn.bootcss.com/systemjs/0.20.19/system.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./index.js"></script>
+	<script>
+		SystemJS.import('./thumb_es.js').then(function(m) {
+			$.extend({
+				thumbClick: function(count, element,dianzanEle) {
+					return new m.Thumb(
+						count, element,dianzanEle
+					).clickAction();
+				}
+			});
+			$.thumbClick(0,".shou","#dianzanshu");
+		});
+	</script>
+</body>
+</html>
